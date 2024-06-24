@@ -28,18 +28,18 @@ const AboutPage = () => {
         <div className="about-developers-container">
           <h3>About the Developers</h3>
           <p>
-            {`KJJN Movie Db was developed by Kai, Josh, Jashan and Nigel. We are a team of passionate developers who utilized React.js to bring the KJJN Movie Db app to life.`}
+            {`KJJN Movie Db was developed by Nigel, Kai, Josh, Jashan. We are a team of passionate developers who utilized React.js to bring the KJJN Movie Db app to life.`}
           </p>
           <div id="developer-git">
+            <a href="https://github.com/brownnigel604">
+              https://github.com/brownnigel604
+            </a>
             <a href="https://github.com/KaiAlcantara">
               https://github.com/KaiAlcantara
             </a>
             <a href="https://github.com/amar-i/">https://github.com/amar-i/</a>
             <a href="https://github.com/jashanSran">
               https://github.com/jashanSran
-            </a>
-            <a href="https://github.com/brownnigel604">
-              https://github.com/brownnigel604
             </a>
           </div>
         </div>

@@ -17,6 +17,7 @@
 #tagline {
   font-weight: bold;
   font-size: 1.5rem;
+  color: #ef8354;
 }
 #release-runtime-container {
   display: flex;
@@ -26,12 +27,7 @@
 
 .genre-button-container {
   display: flex;
-}
-
-.genre-button {
-  color: white;
-  font-size: 0.7rem;
-  background-color: #ef8354;
+  flex-direction: row;
 }
 
 .genre-button:first-of-type {

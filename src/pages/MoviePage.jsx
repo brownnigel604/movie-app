@@ -98,13 +98,18 @@ const MoviePage = () => {
   }
 
   const renderStars = (rating) => {
-    const fullStars = Math.min(Math.floor(rating / 2), 5); // Limit to 5 full stars
-    const halfStar = rating % 2 !== 0; // Check for half star
+    const fullStars = Math.floor(rating / 2); // Calculate full stars
+    const halfStar = rating % 2 >= 1; // Determine if there should be a half star
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Calculate empty stars
 
     const stars = [];
     for (let i = 0; i < fullStars; i++) {
       stars.push(
-        <FontAwesomeIcon key={i} icon={faStar} style={{ color: "gold" }} />
+        <FontAwesomeIcon
+          key={`full-${i}`}
+          icon={faStar}
+          style={{ color: "gold" }}
+        />
       );
     }
     if (halfStar) {
@@ -116,7 +121,15 @@ const MoviePage = () => {
         />
       );
     }
-
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <FontAwesomeIcon
+          key={`empty-${i}`}
+          icon={faStar}
+          style={{ color: "lightgray" }}
+        />
+      );
+    }
     return stars;
   };
 
@@ -179,9 +192,9 @@ const MoviePage = () => {
             </div>
             <div className="genre-btn-container">
               {movie.genres.slice(0, 2).map((genre) => (
-                <button key={genre.id} className="genre-button">
+                <span key={genre.id} className="genre-button">
                   {genre.name}
-                </button>
+                </span>
               ))}
             </div>
           </div>
@@ -190,7 +203,7 @@ const MoviePage = () => {
           <div className="rating-votes">
             {movie.vote_average && (
               <p className="movie-rating">
-                Rating: {renderStars(movie.vote_average / 1)}{" "}
+                Rating: {renderStars(movie.vote_average)}{" "}
                 {((movie.vote_average.toFixed(2) / 10) * 100).toFixed(1)}%
               </p>
             )}

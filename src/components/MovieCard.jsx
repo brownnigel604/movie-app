@@ -20,6 +20,13 @@ const formatDate = (dateString) => {
   }
 };
 
+const truncateOverview = (text, maxLength) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return text.slice(0, maxLength) + "...";
+};
+
 const MovieCard = ({ movie }) => {
   const [showDetails, setShowDetails] = useState(false);
   const location = useLocation();
@@ -79,13 +86,18 @@ const MovieCard = ({ movie }) => {
   const isMoviePage = location.pathname.includes(`/movie/${movie.id}`);
 
   const renderStars = (rating) => {
-    const fullStars = Math.min(Math.floor(rating / 2), 5); // Limit to 5 full stars
-    const halfStar = rating % 2 !== 0; // Check for half star
+    const fullStars = Math.floor(rating / 2); // Calculate full stars
+    const halfStar = rating % 2 >= 1; // Determine if there should be a half star
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Calculate empty stars
 
     const stars = [];
     for (let i = 0; i < fullStars; i++) {
       stars.push(
-        <FontAwesomeIcon key={i} icon={faStar} style={{ color: "gold" }} />
+        <FontAwesomeIcon
+          key={`full-${i}`}
+          icon={faStar}
+          style={{ color: "gold" }}
+        />
       );
     }
     if (halfStar) {
@@ -94,6 +106,15 @@ const MovieCard = ({ movie }) => {
           key="half"
           icon={faStarHalfAlt}
           style={{ color: "gold" }}
+        />
+      );
+    }
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <FontAwesomeIcon
+          key={`empty-${i}`}
+          icon={faStar}
+          style={{ color: "lightgray" }}
         />
       );
     }
@@ -129,7 +150,7 @@ const MovieCard = ({ movie }) => {
 
         {movie.vote_average && (
           <p className="movie-rating">
-            Rating: {renderStars(movie.vote_average / 1)}{" "}
+            Rating: {renderStars(movie.vote_average)}{" "}
             {((movie.vote_average.toFixed(2) / 10) * 100).toFixed(1)}%
           </p>
         )}
@@ -161,7 +182,9 @@ const MovieCard = ({ movie }) => {
             </span>
           </div>
         </div>
-        <p className="movie-overview">{movie.overview}</p>
+        <p className="movie-overview">
+          {truncateOverview(movie.overview, 200)}
+        </p>
         {!isMoviePage && (
           <Link to={`/movie/${movie.id}`} className="movie-card-link">
             <button
