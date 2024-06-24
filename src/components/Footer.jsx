@@ -8,7 +8,7 @@ function Footer() {
         <img id="footer-logo" src={kjjnLogo} alt="KJJN logo" />
         <div id="copyright">
           <p>&copy; 2024 KJJN Movie Db</p>
-          <p>Created by Kai, Josh, Jashan and Nigel</p>
+          <p>Created by Nigel, Kai, Josh and Jashan </p>
         </div>
       </div>
     </footer>
