@@ -1,0 +1,46 @@
+#endorse-text {
+  font-size: 0.8rem;
+}
+
+#developer-git {
+  display: flex;
+  flex-direction: column;
+}
+
+#developer-git a {
+  color: #535bf2;
+  text-decoration: none;
+}
+
+#developer-git a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.about-project-container h3,
+.about-developers-container h3 {
+  color: #ef8354;
+}
+
+@media (min-width: 320px) {
+  .about-project-container,
+  .about-developers-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 600px) {
+  h2 {
+    text-align: center;
+  }
+
+  .about-project-container,
+  .about-developers-container {
+    width: 400px;
+  }
+
+  .about-page-container {
+    display: flex;
+    justify-content: center;
+  }
+}

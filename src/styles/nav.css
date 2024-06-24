@@ -1,0 +1,65 @@
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav a {
+  padding: 0 1rem;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+nav a:hover {
+  transition: all 0.4s ease-in-out;
+  transform: scale(1.2);
+}
+
+.sidebar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(20px);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0rem;
+  padding: 0;
+}
+
+.sidebar li a {
+  margin: 1.5rem 0;
+  font-size: 2rem;
+}
+.sidebar a {
+  width: 100%;
+}
+
+.exitMenu,
+.menu {
+  font-size: 3rem;
+  color: #535bf2;
+  cursor: pointer;
+}
+
+.menu i:hover {
+  transition: all 0.4s ease-in-out;
+  transform: scale(1.2);
+}
+
+.exitMenu i:hover {
+  transition: all 0.4s ease-in-out;
+  transform: rotate(180deg);
+}
+
+.menu {
+  display: none;
+}
